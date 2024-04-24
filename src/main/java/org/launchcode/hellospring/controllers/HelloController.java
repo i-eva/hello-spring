@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HelloController {
@@ -23,6 +24,13 @@ public class HelloController {
     @GetMapping("hello")
     @ResponseBody
     public String hello(@RequestParam String name) {
+        return "Hello, " + name + "!";
+    }
+
+    // Responds to get requests (of a form) at /hello/LaunchCode
+    @GetMapping("hello/{name}")
+    @ResponseBody
+    public String helloAgain(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
 }
