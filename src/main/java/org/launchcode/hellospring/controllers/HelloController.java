@@ -27,10 +27,10 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 
-    // Responds to get requests (of a form) at /hello/LaunchCode
+    // Responds to (handles) get requests (of a form) at /hello/LaunchCode
     @GetMapping("hello/{name}")
     @ResponseBody
-    public String helloAgain(@PathVariable String name) {
+    public String helloWithPathParameter(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
 }
