@@ -33,4 +33,20 @@ public class HelloController {
     public String helloWithPathParameter(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
+
+    @GetMapping
+    @ResponseBody
+    public String helloForm() {
+        String html =
+                "<html>" +
+                        "<body>" +
+                        "<form action = 'hello'>" + // submit a request to hello
+                        "<input type = 'text' name = 'name'>" +
+                        "<input type = 'submit' value = 'Greet Me!'>" +
+                        "</form>" +
+                        "</body>" +
+                        "</html>";
+        return html;
+    }
+
 }
