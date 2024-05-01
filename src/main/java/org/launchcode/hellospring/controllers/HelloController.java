@@ -1,10 +1,7 @@
 package org.launchcode.hellospring.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
@@ -21,7 +18,10 @@ public class HelloController {
     }
 
     // Responds to get requests at /hello?name=LaunchCode
-    @GetMapping("hello")
+    // @GetMapping("hello") is replaced by...
+
+    // Responds to get and post requests at /hello?coder=LaunchCoder
+    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String hello(@RequestParam String name) {
         return "Hello, " + name + "!";
@@ -40,7 +40,8 @@ public class HelloController {
         String html =
                 "<html>" +
                         "<body>" +
-                        "<form action = 'hello'>" + // submit a request to hello
+                        // "<form action = 'hello'>" + // submit a request to hello replaced by...
+                        "<form method = 'post' action = '/hello'>" +
                         "<input type = 'text' name = 'name'>" +
                         "<input type = 'submit' value = 'Greet Me!'>" +
                         "</form>" +
